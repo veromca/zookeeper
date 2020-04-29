@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.6</version>
+            <version>3.4.14</version>
         </dependency>
 
         <!-- curator 封装了一些高级特性，如：Cache事件监听、选举、分布式锁、分布式Barrier -->
