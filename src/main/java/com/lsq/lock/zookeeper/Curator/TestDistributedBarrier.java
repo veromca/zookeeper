@@ -36,6 +36,7 @@ public class TestDistributedBarrier {
                 @Override
                 public void run() {
                     try {
+                        //重试策略: baseSleepTimeMs 初始睡眠时间,用于计算之后的每次重试的sleep时间;maxRetries 最大重试次数
                         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 10);
                         CuratorFramework cf = CuratorFrameworkFactory.builder()
                                 .connectString(CONNECT_ADDR)
@@ -46,8 +47,9 @@ public class TestDistributedBarrier {
                         barrier = new DistributedBarrier(cf, "/locktest");
                         System.out.println(Thread.currentThread().getName() + "设置barrier!");
                         barrier.setBarrier();    //设置
-                        barrier.waitOnBarrier();    //等待
+                       // barrier.waitOnBarrier();    //等待
                         System.out.println(Thread.currentThread().getName() + "---------开始执行程序----------");
+                        System.out.println(Thread.currentThread().getName() + "执行完成!");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

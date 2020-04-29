@@ -45,7 +45,7 @@ public class WatchCallBack implements Watcher, AsyncCallback.StatCallback,AsyncC
         switch (watchedEvent.getType()) {
             case None:
                 break;
-            case NodeCreated: //节点修改
+            case NodeCreated: //节点创建事件
                 zk.getData("/AppConf",this,this,"sad");//获取数据
                 break;
             case NodeDeleted:
@@ -53,7 +53,7 @@ public class WatchCallBack implements Watcher, AsyncCallback.StatCallback,AsyncC
                 conf.setConf("");
                 cc = new CountDownLatch(1);
                 break;
-            case NodeDataChanged://节点修改
+            case NodeDataChanged://节点修改事件
                 zk.getData("/AppConf",this,this,"sad");//获取数据
                 break;
             case NodeChildrenChanged:
